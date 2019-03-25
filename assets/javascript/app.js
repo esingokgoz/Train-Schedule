@@ -76,47 +76,29 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(firstTrain);
     console.log(frequency);
 
+    var timeArray = firstTrain.split(":");
+    console.log(timeArray);
 
-    var timeConverted = moment(firstTrain, "hh:mm").subtract(1, "years");
-    var timeDiff = moment().diff(moment(timeConverted), "minutes");
+    var firstTrainMoment = moment().hours(timeArray[0]).minutes(timeArray[1]);
+    console.log(firstTrainMoment.format("dddd, MMMM Do, YYYY h:mm:ss A"));
+
+    var timeDiff = moment().diff(firstTrainMoment, "minutes");
     console.log(timeDiff);
 
-    var tRemainder = timeDiff % frequency;
-    console.log(tRemainder);
+    var timeTillNextTrain = timeDiff % frequency;
+    console.log(timeTillNextTrain);
 
-    var tArrival = frequency - tRemainder;
+    var tArrival = moment(timeTillNextTrain + firstTrainMoment).format("HH:mm A");
     console.log(tArrival);
 
-    var tMinutes = moment().add(tArrival, "minutes");
-    console.log(tMinutes);
-
+    // Create the new row
     var newRow = $("<tr>").append(
-            $("<td>").text(trainName),
-            $("<td>").text(destination),
-            $("<td>").text(frequency),
-            $("<td>").text(tArrival),
-            $("<td>").text(tMinutes)
-        );
-
-
-    // var tRemainder = moment().diff(moment.unix(firstTrain), "minutes") % frequency;
-    // console.log("time remainder " + tRemainder);
-
-    // var tMinutes = frequency - tRemainder;
-    // console.log("time minutes " + tMinutes);
-
-    // // To calculate the arrival time, add the tMinutes to the currrent time
-    // var tArrival = moment().add(tMinutes, "m").format("hh:mm A");
-    // console.log("time arrival " + tArrival);
-
-    // // Create the new row
-    // var newRow = $("<tr>").append(
-    //     $("<td>").text(trainName),
-    //     $("<td>").text(destination),
-    //     $("<td>").text(frequency),
-    //     $("<td>").text(tArrival),
-    //     $("<td>").text(tMinutes)
-    // );
+        $("<td>").text(trainName),
+        $("<td>").text(destination),
+        $("<td>").text(frequency),
+        $("<td>").text(tArrival),
+        $("<td>").text(timeTillNextTrain)
+    );
 
     // Append the new row to the table
     $("#train-schedule > tbody").append(newRow);
