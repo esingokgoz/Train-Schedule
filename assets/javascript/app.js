@@ -88,6 +88,7 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(tArrival);
 
     var tMinutes = moment().add(tArrival, "minutes");
+    console.log(tMinutes);
 
     var newRow = $("<tr>").append(
             $("<td>").text(trainName),
