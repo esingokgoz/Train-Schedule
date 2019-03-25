@@ -17,11 +17,13 @@ var config = {
   $("#addTrain").on("click", function(event) {
     event.preventDefault();
   
+    //grab user input
     trainName = $("#trainName").val().trim();
     trainDest = $("#destination").val().trim();
     startTrain = $("#firstTrain").val().trim();
     trainFrequency = $("#frequency").val().trim();
 
+    //alert user if fields are blank
     if (trainName == "") {
         alert("Enter a train name.");
         return false;
@@ -39,17 +41,19 @@ var config = {
         return false;
     }
   
-    //push data to db
+    //create local temp object for holding train data
     var newTrain = {
       name: trainName,
       destination: trainDest,
       firstTrain: startTrain,
       frequency: trainFrequency
     };
-    console.log("New train info: " + newTrain);
+    console.log("New train info: " + newTrain.name);
 
+    //upload train data to the db
     database.ref().push(newTrain);
   
+    //clear all text boxes
     $("#trainName").val("");
     $("#destination").val("");
     $("#firstTrain").val("");
@@ -57,8 +61,7 @@ var config = {
   });
   
   database.ref().on("child_added", function(childSnapshot) {
-    // console.log(childSnapshot.val());
-    console.log("inside childadded");
+    console.log(childSnapshot.val());
 
     // Store everything into a variable.
     var trainName = childSnapshot.val().name;
@@ -72,9 +75,6 @@ var config = {
     console.log(firstTrain);
     console.log(frequency);
   
-    var currentTime = moment();
-    console.log("current time is: " + currentTime);
-    
 
     var tRemainder = moment().diff(moment.unix(firstTrain), "minutes") % frequency;
     console.log("time remainder " + tRemainder);
