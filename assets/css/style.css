@@ -1,0 +1,49 @@
+body {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    clear: both;
+    background-color: #edf1f7;
+  }
+  
+  .jumbotron {
+    background-image: url("../images/bg.jpg");
+    height: 300px;
+    background-size: cover;
+    margin-bottom: 10px;
+  }
+  
+  #logo {
+    float: left;
+    width: 15%;
+  }
+  
+  #header {
+    font-family: "Special Elite", cursive;
+  }
+
+  h1 {
+    text-align: center;
+    color: #13185a;
+    font-family: "Playfair Display SC", serif;
+    background-color: #b3a5bc;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  #tablecontainer,
+  #formcontainer {
+    border: solid 2px;
+  }
+
+  form {
+    margin: 10px;
+  }
+
+  th {
+    height: 50px;
+  }
+  
+  
