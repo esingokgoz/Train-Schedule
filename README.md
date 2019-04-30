@@ -14,10 +14,10 @@ Link to application: https://esingokgoz.github.io/Train-Schedule/
 
 
 ##### Main Screen
-<img width="1158"  src="https://github.com/esingokgoz/Giphymotions/blob/master/assets/images/startpage.png">
+<img width="1158"  src="https://github.com/esingokgoz/Train-Schedule/blob/master/assets/images/mainpage.png">
 
 - Fill out Add Train form and click Submit
-<img width="1158"  src="https://github.com/esingokgoz/Giphymotions/blob/master/assets/images/selection.png">
+<img width="1158"  src="https://github.com/esingokgoz/Train-Schedule/blob/master/assets/images/addtrain.png">
 
 - View added train in the current
-<img width="1158"  src="https://github.com/esingokgoz/Giphymotions/blob/master/assets/images/newselection.png">
+<img width="1158"  src="https://github.com/esingokgoz/Train-Schedule/blob/master/assets/images/viewtrain.png">
